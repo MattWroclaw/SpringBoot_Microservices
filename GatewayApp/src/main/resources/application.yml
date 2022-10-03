@@ -1,0 +1,30 @@
+server:
+  port: 8086
+ 
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 3
+    hostname: localhost
+  client: 
+    serviceUrl:
+      defaultZone: http://localhost:8085/eureka
+  
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: cust-service
+          uri: lb://CUST-SERVICE
+          predicates:
+            - Path=/cust/**
+
+        - id: account-service
+          uri: lb://ACCOUNT-SERVICE
+          predicates:
+            - Path=/acc/**
+
+
+

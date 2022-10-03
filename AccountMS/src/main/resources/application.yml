@@ -1,0 +1,15 @@
+server:
+  port: 8083
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 3
+    hostname: localhost
+  client: 
+    serviceUrl:
+      defaultZone: http://localhost:8085/eureka
+  
+spring:
+  application:
+    name: account-service
